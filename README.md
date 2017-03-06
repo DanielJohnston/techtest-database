@@ -15,13 +15,13 @@ The brief is as follows:
 
 ## Technologies
 
-A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. For testing, Capybara and RSpec provide feature and unit tests. Depending on time, CI might be worth looking at as well. As there's no persistent storage in the brief at present and session-based storage doesn't match the brief, I'm using variables scoped on the class to avoid global variables.
+A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. For testing, Capybara and RSpec provide feature and unit tests. Depending on time, CI might be worth looking at as well. As there's no persistent storage in the brief at present and session-based storage doesn't match the brief, I'm using variables scoped on the class to avoid global variables. I've deliberately added a homepage and submission form to the spec, in order to make feature testing more straightforward. If this converts into a pure API later, I can remove this again.
 
 ## User stories
 
 - [x] As a user, so that I can access the server for storing data, I want http://localhost:4000/ to show me a page
 
-- [ ] As a user, so that I can see how to store data, I want http://localhost:4000/ to show me a form to store data
+- [x] As a user, so that I can see how to store data, I want http://localhost:4000/ to show me a form to store data
 
 - [ ] As a user, so that I can keep information, I would like to pass it to a server and get confirmation of storage
 

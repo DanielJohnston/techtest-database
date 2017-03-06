@@ -27,7 +27,7 @@ require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
 
-# Sic Capybara on the Database application
+# Sic Capybara on the Database application at the appropriate port
 Capybara.app = Database
 Capybara.server_port = 4000
 
