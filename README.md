@@ -62,3 +62,5 @@ Depending on time, CI might be worth looking at as well.
 - [ ] As a web browser user, so that I can navigate more quickly, I would like to see navigation buttons after setting or getting values, provided I'm in the web interface
 
 - [ ] As a user, so that I understand I can't overwrite an existing key-value pair, I would like creating a new record with the same key to show a friendly error message
+
+- [ ] As a server admin, so that I can be confident that changes to the application do not break it, I would like continuous integration testing to be implemented on the GitHub repo
