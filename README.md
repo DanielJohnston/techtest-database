@@ -15,7 +15,7 @@ The brief is as follows:
 
 ## Technologies
 
-A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. For testing, Capybara and RSpec provide feature and unit tests. Depending on time, CI might be worth looking at as well. As there's no persistent storage in the brief at present and session-based storage doesn't match the brief, I'm using variables scoped on the class to avoid global variables. I've deliberately added a homepage and submission form to the spec, in order to make feature testing more straightforward. If this converts into a pure API later, I can remove this again.
+A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. For testing, Capybara and RSpec provide feature and unit tests. Depending on time, CI might be worth looking at as well. As there's no persistent storage in the brief at present and session-based storage doesn't match the brief, I'm using variables scoped on the class to avoid global variables. I've added a homepage and submission form to the spec, in order to make feature testing more straightforward. If this converts into a pure API later, I can remove this again. It's worth noting that, to meet the brief, it's necessary to change the model using a GET request, which isn't normally best practice.
 
 ## User stories
 
@@ -27,7 +27,9 @@ A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. 
 
 - [x] As a user, to be able to store in a manner following the specified behaviour, I would like the web submission to use http://localhost:4000/set?somekey=somevalue as the request for storing data
 
-- [ ] As a user, so that I can see how to retrieve data, I want http://localhost:4000/ to show me a form to retrieve data
+- [x] As a user, so that I can see how to retrieve data, I want http://localhost:4000/ to show me a form to retrieve data
+
+- [x] As a user, to be able to retrieve data in a manner following the specified behaviour, I would like the web submission to use http://localhost:4000/get?key=somekey as the request for retrieving data
 
 - [ ] As a user, so that I can retrieve information I've stored, I would like to pass information to a server and then retrieve it later
 
