@@ -1,9 +1,14 @@
 require 'sinatra/base'
-
+require 'pry'
 
 class Database < Sinatra::Base
   # Get Sinatra to use port 4000 as required in spec
   set :port, 4000
+
+  before do
+    @keystore = Keystore.instance
+    @keystore ||= Keystore.create
+  end
 
   get '/' do
     erb :index
@@ -18,11 +23,13 @@ class Database < Sinatra::Base
   end
 
   get '/set' do
+    key, value = params.first
+    @keystore.set_value(key, value)
     erb :set
   end
 
   get '/get' do
-
+    erb :get
   end
 
   # start the server if ruby file executed directly

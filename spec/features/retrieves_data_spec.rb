@@ -4,4 +4,10 @@ feature 'Retrieving data from the database' do
     retrieve_an_item
     expect(page).to have_current_path('/get?key=somekey')
   end
+
+  scenario 'That has previously been stored' do
+    store_an_item
+    retrieve_an_item
+    expect(page).to have_content 'somevalue'
+  end
 end
