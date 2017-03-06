@@ -23,7 +23,9 @@ A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. 
 
 - [x] As a user, so that I can see how to store data, I want http://localhost:4000/ to show me a form to store data
 
-- [ ] As a user, so that I can keep information, I would like to pass it to a server and get confirmation of storage
+- [x] As a user, so that I can keep information, I would like to pass it to a server and get confirmation of storage
+
+- [x] As a user, to be able to store in a manner following the specified behaviour, I would like the web submission to use http://localhost:4000/set?somekey=somevalue as the request for storing data
 
 - [ ] As a user, so that I can see how to retrieve data, I want http://localhost:4000/ to show me a form to retrieve data
 
