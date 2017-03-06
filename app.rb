@@ -1,14 +1,11 @@
+ENV["RACK_ENV"] ||= "development"
+
 require 'sinatra/base'
 require './models/keystore'
 
 class Database < Sinatra::Base
   # Get Sinatra to use port 4000 as required in spec
   set :port, 4000
-
-  before do
-    @keystore = Keystore.instance
-    @keystore ||= Keystore.create
-  end
 
   get '/' do
     erb :index
@@ -24,13 +21,14 @@ class Database < Sinatra::Base
 
   get '/set' do
     key, value = params.first
-    @keystore.set_value(key, value)
+    Keystore.set_value(key, value)
     erb :set
   end
 
   get '/get' do
     key = params[:key]
-    @value = @keystore.get_value(key)
+    @value = Keystore.get_value(key)
+    puts "get value: #{@value}"
     erb :get
   end
 

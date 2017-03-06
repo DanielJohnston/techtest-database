@@ -11,6 +11,7 @@ feature 'The home page' do
 
   scenario 'Shows a form to retrieve my stuff' do
     # Is raising an expect on a helper method good practice?
+    store_an_item
     expect{ retrieve_an_item }.not_to raise_error
   end
 end

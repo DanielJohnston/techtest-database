@@ -1,22 +1,23 @@
-# Note that this uses class instance variables, pending use of an actual persistence layer
+require 'data_mapper'
+require 'dm-postgres-adapter'
+
 class Keystore
-  def self.create
-    @keystore = Keystore.new
+
+  include DataMapper::Resource
+
+  property :stored_key, String, :key => true
+  property :stored_value, String
+
+  def self.set_value key, value
+    Keystore.create(stored_key: key, stored_value: value)
   end
 
-  def self.instance
-    @keystore
-  end
-
-  def initialize
-    @values = Hash.new
-  end
-
-  def set_value key, value
-    @values[key] = value
-  end
-
-  def get_value key
-    @values[key]
+  def self.get_value key
+    Keystore.get(key).stored_value
   end
 end
+
+# This should be extracted out to an initializer
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/keystore_db_#{ENV['RACK_ENV']}")
+DataMapper.finalize
+DataMapper.auto_upgrade!

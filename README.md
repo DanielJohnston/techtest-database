@@ -13,10 +13,12 @@ Following completion of this brief, the next stage is:
 ## Installation
 
 * Download this repo to a machine with a working Ruby install. I've verified the software works with Windows Subsytem for Linux (i.e. Ubuntu), and it should work on macOS.
-* Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`.
-
 * To be confirmed: you will also need a PostgreSQL database server, and will need to set up the database, connection and permissions.
-
+* In Linux / WSL, the bcrypt gem has dependencies that Bundle can't install. Install them using `sudo apt-get install libgmp-dev build-essential` prior to running `bundle`.
+* In Linux / WSL again, DataMapper relies on libpq-dev and whichever version of postgresql-server-dev matches to your installed version of PostgreSQL, so you'll also need to run `sudo apt-get install  libpq-dev postgresql-server-dev-9.5` or similar if you don't have them already.
+* Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`.
+* To test if PostgreSQL is running, try `psql`. If it can't connect, run `sudo service postgresql restart` to see if that resolves the issue.
+* The database setup is not in place currently, so you'll need to `CREATE DATABASE keystore_db_test;` to get rspec working, and the same with `development` and `production`. Migrations appear to be working, as does database_cleaner, so the test database is cleaned between tests.
 * Run `rspec` in the project root to run the Capybara and RSpec tests which confirm everything is working.
 * Run `ruby app.rb` in the project root to start the server on http://localhost:4000/. Running `rackup` starts a generic server with the wrong port, so don't do that.
 
@@ -48,3 +50,7 @@ Depending on time, CI might be worth looking at as well.
 - [x] As a user, so that I can retrieve information I've stored, I would like to pass information to a server and then retrieve it later
 
 - [x] As a different user, so that I can retrieve information someone else has stored, I would like to start a new session and retrieve previously stored information using a key that's been shared with me
+
+- [x] As a user, so that I can retrieve information even if the program or computer are reset, I would like to retrieve data that has been stored using a persistent database
+
+- [ ] As a user, so that I understand that I've given a non-existent key, I would like an error message if I enter a key that has no attached value in the database
