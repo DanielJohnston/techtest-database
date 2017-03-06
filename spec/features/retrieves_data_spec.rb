@@ -10,4 +10,11 @@ feature 'Retrieving data from the database' do
     retrieve_an_item
     expect(page).to have_content 'somevalue'
   end
+
+  scenario 'As a different user' do
+    store_an_item
+    Capybara.reset_sessions!
+    retrieve_an_item
+    expect(page).to have_content 'somevalue'
+  end
 end

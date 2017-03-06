@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'pry'
+require './models/keystore'
 
 class Database < Sinatra::Base
   # Get Sinatra to use port 4000 as required in spec
