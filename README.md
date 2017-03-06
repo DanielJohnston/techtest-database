@@ -6,6 +6,12 @@ The brief is as follows:
 
 > Write a program that runs a server that is accessible on http://localhost:4000/. When your server receives a request on http://localhost:4000/set?somekey=somevalue it should store the passed key and value in memory. When it receives a request on http://localhost:4000/get?key=somekey it should return the value stored at somekey. Store the data in memory, not in a database, but bear in mind that you will later need to add a database to this code.
 
+## Installation
+
+* Download this repo to a machine with a working Ruby install. I've verified the software works with Windows Subsytem for Linux (i.e. Ubuntu), and it should work on macOS.
+* Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`
+* Run `rspec` in the project root to run the Capybara and RSpec tests which confirm everything is working
+* Run `ruby app.rb` in the project root to start the server on http://localhost:4000/. Running `rackup` starts a generic server with the wrong port, so don't do that
 
 ## Technologies
 
@@ -13,7 +19,7 @@ A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. 
 
 ## User stories
 
-- [ ] As a user, so that I can access the server for storing data, I want http://localhost:4000/ to show me a page
+- [x] As a user, so that I can access the server for storing data, I want http://localhost:4000/ to show me a page
 
 - [ ] As a user, so that I can see how to store data, I want http://localhost:4000/ to show me a form to store data
 
