@@ -6,16 +6,30 @@ The brief is as follows:
 
 > Write a program that runs a server that is accessible on http://localhost:4000/. When your server receives a request on http://localhost:4000/set?somekey=somevalue it should store the passed key and value in memory. When it receives a request on http://localhost:4000/get?key=somekey it should return the value stored at somekey. Store the data in memory, not in a database, but bear in mind that you will later need to add a database to this code.
 
+Following completion of this brief, the next stage is:
+
+> Implement persistent storage in a database
+
 ## Installation
 
 * Download this repo to a machine with a working Ruby install. I've verified the software works with Windows Subsytem for Linux (i.e. Ubuntu), and it should work on macOS.
-* Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`
-* Run `rspec` in the project root to run the Capybara and RSpec tests which confirm everything is working
-* Run `ruby app.rb` in the project root to start the server on http://localhost:4000/. Running `rackup` starts a generic server with the wrong port, so don't do that
+* Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`.
 
-## Technologies
+* To be confirmed: you will also need a PostgreSQL database server, and will need to set up the database, connection and permissions.
 
-A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. For testing, Capybara and RSpec provide feature and unit tests. Depending on time, CI might be worth looking at as well. As there's no persistent storage in the brief at present and session-based storage doesn't match the brief, I'm using variables scoped on the class to avoid global variables. I've added a homepage and submission form to the spec, in order to make feature testing more straightforward. If this converts into a pure API later, I can remove this again. It's worth noting that, to meet the brief, it's necessary to change the model using a GET request, which isn't normally best practice.
+* Run `rspec` in the project root to run the Capybara and RSpec tests which confirm everything is working.
+* Run `ruby app.rb` in the project root to start the server on http://localhost:4000/. Running `rackup` starts a generic server with the wrong port, so don't do that.
+
+## Technologies and development notes
+
+A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby:
+
+* For testing, Capybara and RSpec provide feature and unit tests.
+* Persistence is via DataMapper and PostgreSQL.
+* I've added a homepage and submission form to the spec, in order to make feature testing more straightforward. If this converts into a pure API later, I can remove this again.
+* It's worth noting that, to meet the brief, it's necessary to change the model using a GET request, which isn't normally best practice.
+
+Depending on time, CI might be worth looking at as well.
 
 ## User stories
 
