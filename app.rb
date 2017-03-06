@@ -29,6 +29,8 @@ class Database < Sinatra::Base
   end
 
   get '/get' do
+    key = params[:key]
+    @value = @keystore.get_value(key)
     erb :get
   end
 

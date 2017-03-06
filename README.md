@@ -31,6 +31,6 @@ A simple web application DSL seems appropriate, so I'm using Sinatra with Ruby. 
 
 - [x] As a user, to be able to retrieve data in a manner following the specified behaviour, I would like the web submission to use http://localhost:4000/get?key=somekey as the request for retrieving data
 
-- [ ] As a user, so that I can retrieve information I've stored, I would like to pass information to a server and then retrieve it later
+- [x] As a user, so that I can retrieve information I've stored, I would like to pass information to a server and then retrieve it later
 
 - [ ] As a different user, so that I can retrieve information someone else has stored, I would like to start a new session and retrieve previously stored information using a key that's been shared with me
