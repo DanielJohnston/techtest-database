@@ -18,7 +18,7 @@ Following completion of this brief, the next stage is:
 * In Linux / WSL again, DataMapper relies on libpq-dev and whichever version of postgresql-server-dev matches to your installed version of PostgreSQL, so you'll also need to run `sudo apt-get install  libpq-dev postgresql-server-dev-9.5` or similar if you don't have them already.
 * Install the bundle gem if necessary, then run `bundle` to install the appropriate gems. If you don't want test infrastructure, use `--without test development`.
 * To test if PostgreSQL is running, try `psql`. If it can't connect, run `sudo service postgresql restart` to see if that resolves the issue.
-* The database setup is not in place currently, so you'll need to `CREATE DATABASE keystore_db_test;` to get rspec working, and the same with `development` and `production`. Migrations appear to be working, as does database_cleaner, so the test database is cleaned between tests.
+* The initial database creation is not in place currently, so you'll need to `CREATE DATABASE keystore_db_test;` within psql to get rspec working, and the same with `development` and `production` respectively. Migrations appear to be working, as does database_cleaner, so the test database is cleaned between tests.
 * Run `rspec` in the project root to run the Capybara and RSpec tests which confirm everything is working.
 * Run `ruby app.rb` in the project root to start the server on http://localhost:4000/. Running `rackup` starts a generic server with the wrong port, so don't do that.
 
@@ -54,3 +54,11 @@ Depending on time, CI might be worth looking at as well.
 - [x] As a user, so that I can retrieve information even if the program or computer are reset, I would like to retrieve data that has been stored using a persistent database
 
 - [ ] As a user, so that I understand that I've given a non-existent key, I would like an error message if I enter a key that has no attached value in the database
+
+- [ ] As a security-conscious user, so that my data is kept safe, I would like the software to reject inputs that would allow attackers to carry out unwanted actions
+
+- [ ] As a server admin, so that I can use the application with minimal setup, I would like a database to be created automatically on first running the application, or a rake task for deployment
+
+- [ ] As a web browser user, so that I can navigate more quickly, I would like to see navigation buttons after setting or getting values, provided I'm in the web interface
+
+- [ ] As a user, so that I understand I can't overwrite an existing key-value pair, I would like creating a new record with the same key to show a friendly error message
